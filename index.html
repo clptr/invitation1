@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Satisfy&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            /* max-width: 576px; */
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            justify-content: center;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #200E3A;
+            background-image: url(mobile\ \(1\).jpeg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* .page {
+            height: 100%;
+        } */
+
+        div.container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .page1{
+            width: 85%;
+            display: flex;
+            border-radius: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+        }
+
+        .page1.dark-mode{
+            background-color: #200E3A;
+        }
+
+        h1{
+            margin-top: 50px;
+            font-family: 'Satisfy', cursive;
+        }
+
+        h3{
+            margin-top: 50px;
+            font-size: 15pt;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        h4{
+            margin: 40px;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        h5{
+            margin: 5px;
+        }
+
+        p{
+            margin-top: 20px;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        a{
+            text-decoration: none;
+            color: #200E3A;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+        .countdown{
+            margin-top: 100px;
+            font-size: 25pt;
+            font-weight: bold;
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        button {
+            width: 130px;
+            height: 40px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            /* margin-bottom: 50px; */
+        }
+
+        .dark-mode{
+            background-color: black;
+            color: white;
+        }
+
+        #checkbox-dark-mode {
+            position: relative;
+            width: 45px;
+            z-index: 999;
+            opacity: 0;
+        }
+
+        span.dark-mode-box{
+            margin: 20px;
+            position: relative;
+            display: inline-block;
+            width: 45px;
+            height: 20px;
+            border-radius: 20px;
+            padding: 1px;
+            background-color: white;
+            border: 1px solid black;
+        }
+
+        div.circle{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background-color: black;
+            left: 0px;
+        }
+
+        div.circle.dark-mode{
+            background-color: white;
+            left: calc(100% - 20px);
+        }
+
+        span.dark-mode-box.dark-mode{
+            border: 1px solid white;
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        @keyframes darkmode-animation{
+            0% {
+                left: 0;
+            }
+            100% {
+                right: 0;
+            }
+        }
+
+        @keyframes lightmode-animation{
+            0% {
+                right: 0;
+            }
+            100% {
+                left: 0;
+            }
+        }
+
+        .font-animation {
+            animation: fontAnimation 5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* TABLET AND LAPTOP SCREEN */
+        @media screen and (min-width : 577px) {
+            body {
+                background-image: url(laptop2.jpg);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+           
+        }
+    </style>
+
+
+
+
+
+</head>
+<body>
+    <div class="container" >
+        <span class="dark-mode-box">
+            <div class="circle move"></div>
+            <input type="checkbox" id="checkbox-dark-mode">'</input>
+        </span>
+        <div id="cover" class="fade-in">
+            
+            <h3>You are invited</h3>
+            <h1>Someone's 17th Birthday</h1>
+            <h4>Friday, 19th July 2024</h4>
+            <h5>Dear you</h5>
+            <h5>Guest name</h5>
+            <button onclick="goToInvitation()">Open Invitation</button>
+        </div>
+    
+        <div id="invitation" class="page1 hidden">
+            <p>WELCOME TO BERK ISLAND</p>
+            <h1>Someone</h1>
+            <P>IS TURNING SEVENTEEN</P>
+            <h4>Friday, 19th July 2024 - 6 PM</h4>
+            <h4>At Someone's House </h4>
+            <button onclick="goToClosing()">Closing</button>
+        </div>
+    
+        <div id="closing" class="page2 hidden">
+            <h4>JOIN US TO CELEBRATE</h4>
+            <h1>Someone's Birthday</h1>
+            <a href="https://www.google.com/maps/place/ATM+MANDIRI+KM+14/@-2.9136869,104.6641061,17z/data=!3m1!4b1!4m6!3m5!1s0x2e3b73b17f1ecac3:0x19943ce1c9c19fba!8m2!3d-2.9136869!4d104.6666864!16s%2Fg%2F11gh9nbz9_?entry=ttu" class="location"><i class='bx bx-location-plus'></i>Someone's House</a>
+            <div id="countdown" class="countdown"></div>
+        </div>
+    </div>
+    
+
+
+
+
+<script>
+
+    const darkModeCheck = document.getElementById("checkbox-dark-mode")
+    const eventDate = new Date("2024-07-19T00:00:00").getTime();
+    const heading = document.getElementById("heading");
+    
+
+
+    document.addEventListener("DOMContentLoaded", () =>{
+        
+        document.querySelector(".menu-toggle").addEventListener("click", event =>{
+            document.querySelectorAll(".menu-toggle-item").forEach(item => {
+                item.classList.toggle("clicked")
+            })
+            document.querySelector(".menu-nav").classList.toggle("clicked");
+            })
+        })
+    
+
+    function updateCountdown() {
+        const currentDate = new Date().getTime();
+        const distance = eventDate - currentDate;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Toggle Dark Mode
+    function DarkMode() {
+        document.body.classList.toggle("dark-mode");
+        document.querySelector(".dark-mode-box").classList.toggle("dark-mode");
+        document.querySelector(".circle").classList.toggle("dark-mode")
+        document.querySelectorAll("button").forEach(btn => {
+            btn.classList.toggle("dark-mode")
+        })
+        document.querySelector(".page1").classList.toggle("dark-mode")
+        document.querySelector(".location").classList.toggle("dark-mode")
+        localStorage.setItem("darkmode", darkModeCheck.checked);
+    }
+
+    if (!localStorage.getItem("darkmode"))
+        localStorage.setItem("darkmode", false);
+    darkModeCheck.checked = JSON.parse(localStorage.getItem("darkmode"));
+
+    if(darkModeCheck.checked){
+        DarkMode();
+    }
+
+    document.getElementById("checkbox-dark-mode").addEventListener("click", function(){
+        DarkMode();
+    })
+
+    // Redirect to Invitation Page
+    function goToInvitation() {
+        document.getElementById("cover").classList.add("hidden");
+        document.getElementById("invitation").classList.remove("hidden");
+        document.getElementById("closing").classList.add("hidden");
+
+
+        // Start Countdown Timer
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    }
+    function goToClosing() {
+        document.getElementById("invitation").classList.add("hidden");
+        document.getElementById("closing").classList.remove("hidden");
+    }
+
+
+</script>
+</body>
+</html>
